@@ -31,9 +31,10 @@ export default function Home() {
       {/* Additional Information */}
       <div className="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-md text-center max-w-2xl">
         <p className="text-lg text-gray-700 leading-relaxed">
-          Our website is dedicated to providing top-notch services and innovative solutions.
-          We believe in quality, excellence, and customer satisfaction. Join us on this
-          journey to explore new opportunities and grow together!
+          Our website is dedicated to providing top-notch services and
+          innovative solutions. We believe in quality, excellence, and customer
+          satisfaction. Join us on this journey to explore new opportunities and
+          grow together!
         </p>
       </div>
     </div>
