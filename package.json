@@ -14,9 +14,9 @@
     "@react-three/rapier": "^1.5.0",
     "@tailwindcss/postcss": "^4.1.1",
     "meshline": "^3.3.1",
-    "next": "14.2.26",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "three": "^0.167.1"
   },
   "devDependencies": {
