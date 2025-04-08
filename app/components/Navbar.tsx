@@ -18,7 +18,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="/services"
+              href="/servis"
               className="text-white hover:text-blue-500"
             >
               Services
