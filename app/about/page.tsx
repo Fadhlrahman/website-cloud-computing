@@ -2,14 +2,14 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <div className="bg-belakang px-6 py-12">
-      <div className="text-justify max-w-7xl mx-auto space-y-10">
+    <div className="bg-belakang px-4 sm:px-6 md:px-8 py-12">
+      <div className="max-w-4xl md:max-w-5xl mx-auto space-y-12">
         {/* Pengertian */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h2 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Pengertian Cryptocurrency
           </h2>
-          <p className="text-lg text-element leading-relaxed">
+          <p className="text-base sm:text-lg text-element leading-relaxed text-justify">
             Cryptocurrency, atau mata uang kripto, adalah bentuk mata uang
             digital yang menggunakan teknologi kriptografi untuk mengamankan
             transaksi, mengontrol penciptaan unit-unit baru, dan memverifikasi
@@ -18,14 +18,14 @@ export default function About() {
             melainkan dijalankan oleh jaringan komputer secara global melalui
             teknologi yang disebut blockchain.
           </p>
-        </div>
+        </section>
 
         {/* Teknologi Blockchain */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h3 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Teknologi Blockchain
           </h3>
-          <p className="text-lg text-element leading-relaxed">
+          <p className="text-base sm:text-lg text-element leading-relaxed text-justify">
             Blockchain adalah buku besar digital terdesentralisasi yang mencatat
             seluruh transaksi cryptocurrency secara permanen dan transparan.
             Setiap blok dalam blockchain berisi sekelompok transaksi, dan
@@ -34,14 +34,14 @@ export default function About() {
             data tidak dapat diubah secara sepihak, sehingga aman dan dapat
             dipercaya oleh seluruh pengguna jaringan.
           </p>
-        </div>
+        </section>
 
         {/* Fungsi dan Manfaat */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h4 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Fungsi dan Manfaat Cryptocurrency
           </h4>
-          <ul className="list-disc list-inside space-y-2 text-lg text-element leading-relaxed">
+          <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-element leading-relaxed">
             <li>
               Sebagai alat tukar untuk pembelian barang dan jasa (meskipun
               terbatas).
@@ -56,18 +56,17 @@ export default function About() {
             </li>
             <li>
               Mendukung teknologi aplikasi terdesentralisasi seperti smart
-              contract, DeFi (Decentralized Finance), dan NFT (Non-Fungible
-              Token).
+              contract, DeFi, dan NFT.
             </li>
           </ul>
-        </div>
+        </section>
 
-        {/* kelebihan cryptocurrency */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h4 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        {/* Kelebihan */}
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Kelebihan Cryptocurrency
           </h4>
-          <ul className="list-disc list-inside space-y-2 text-lg text-element leading-relaxed">
+          <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-element leading-relaxed">
             <li>Desentralisasi: Tidak dikendalikan oleh pihak ketiga.</li>
             <li>
               Keamanan tinggi: Berkat teknologi kriptografi dan blockchain.
@@ -84,28 +83,28 @@ export default function About() {
               geografis.
             </li>
           </ul>
-        </div>
+        </section>
 
-        {/* status cryptocurrency */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h3 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        {/* Status di Indonesia */}
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Status Cryptocurrency di Indonesia
           </h3>
-          <p className="text-lg text-element leading-relaxed">
+          <p className="text-base sm:text-lg text-element leading-relaxed text-justify">
             Di Indonesia, cryptocurrency diakui sebagai aset komoditas digital
             dan diatur oleh BAPPEBTI (Badan Pengawas Perdagangan Berjangka
             Komoditi). Artinya, masyarakat dapat membeli dan menjual
             cryptocurrency sebagai investasi. Namun, cryptocurrency tidak diakui
             sebagai alat pembayaran yang sah.
           </p>
-        </div>
+        </section>
 
-        {/* langkah awal */}
-        <div className="hover:-translate-y-1 transform transition duration-300">
-          <h4 className="text-2xl font-bold text-element mb-4 max-w-7xl mx-auto">
+        {/* Langkah Awal */}
+        <section className="hover:-translate-y-1 transform transition duration-300">
+          <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-4 text-center md:text-left">
             Langkah Awal Memulai Investasi Cryptocurrency
           </h4>
-          <ul className="list-disc list-inside space-y-2 text-lg text-element leading-relaxed">
+          <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-element leading-relaxed">
             <li>
               Pilih platform exchange terpercaya seperti Indodax atau
               Tokocrypto.
@@ -118,7 +117,7 @@ export default function About() {
               cold wallet).
             </li>
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   );
