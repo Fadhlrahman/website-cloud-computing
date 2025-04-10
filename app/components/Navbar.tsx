@@ -9,7 +9,9 @@ export default function Navbar() {
   return (
     <nav className="bg-element shadow-md py-4">
       <div className="container mx-auto px-6 flex justify-between items-center">
+        <Link href="/">
         <h1 className="text-2xl font-bold text-white">CryptoZone</h1>
+        </Link>
 
         {/* Tombol Hamburger */}
         <div className="md:hidden">
