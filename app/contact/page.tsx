@@ -29,9 +29,9 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-belakang flex flex-col items-center px-4 sm:px-6 md:px-8 py-12">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-10 text-center">
-        Our Team
+    <div className="min-h-screen overflow-x-hidden bg-belakang flex flex-col items-center px-4 sm:px-6 md:px-8 py-12 mb-14">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-element mb-14 text-center">
+        MEMBER OF CRYPTOZONE
       </h2>
 
       {/* Grid Team */}
