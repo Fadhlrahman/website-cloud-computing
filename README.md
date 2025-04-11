@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🪙 CryptoZone - Web Informasi dan Edukasi Kripto
 
-## Getting Started
+CryptoZone adalah platform web interaktif yang menyediakan:
+- Berita terkini seputar cryptocurrency 📢
+- Ranking harga kripto real-time 💹
+- Grafik harga 7 hari terakhir per koin 📈
+- Informasi tim developer 👨‍💻
 
-First, run the development server:
+Dibangun menggunakan Next.js (App Router) dengan styling modern via Tailwind CSS dan grafik interaktif dari Chart.js.
+
+---
+
+## 🚀 Fitur Utama
+
+- 🔍 **Cari & Filter Koin** berdasarkan nama
+- 📊 **Klik baris koin** untuk tampilkan grafik harga 7 hari terakhir
+- 📰 **Berita crypto** real-time dari NewsAPI
+- 🏆 **Ranking top 10** harga kripto dari CoinGecko API
+- 👥 **Profil Tim Developer** lengkap dengan sosial media
+
+---
+
+## 📦 Tech Stack
+
+- **Next.js** App Router
+- **Tailwind CSS** – styling responsif
+- **CoinGecko API** – data harga koin & grafik
+- **NewsAPI** – data berita cryptocurrency
+- **Chart.js + react-chartjs-2** – grafik harga kripto
+- **React Icons** – ikon sosial media & indikator harga
+
+---
+
+## ⚙️ Instalasi
 
 ```bash
+# 1. Clone repo
+https://github.com/namamu/cryptozone.git
+
+# 2. Install dependencies
+npm install
+
+# 3. Tambahkan file .env.local
+NEXT_PUBLIC_NEWS_API_KEY=your_news_api_key_here
+
+# 4. Jalankan server lokal
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 Struktur Halaman
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` - Landing page (hero + CTA)
+- `/about` - Tentang cryptocurrency
+- `/servis` - Ranking harga, grafik & berita
+- `/contact` - Profil tim pengembang
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📈 API yang Digunakan
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [CoinGecko API](https://www.coingecko.com/en/api/documentation)
+  - Endpoint harga: `/coins/markets`
+  - Endpoint grafik: `/coins/{id}/market_chart`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [NewsAPI](https://newsapi.org/)
+  - Endpoint berita: `/v2/everything?q=cryptocurrency`
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧑‍💻 Kontributor
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fadhlrahman Fitra Arsil – UI/UX & Frontend
+- Rama Pradana Wijaya – Backend & API
+
+---
+
+## 📜 Lisensi
+
+Proyek ini dikembangkan untuk keperluan edukasi dan pengembangan portofolio pribadi.
+
+---
+
+Terima kasih sudah menggunakan CryptoZone! 🚀
+
+> Jika kamu suka project ini, jangan lupa kasih ⭐ atau fork 🙌
+
+
+
+
+Jangan lupa untuk Install
+1. npm install react-icons
+2. npm install chart.js react-chartjs-2
+3. npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+4. npm install @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio
