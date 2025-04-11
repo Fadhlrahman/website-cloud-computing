@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { Line } from "react-chartjs-2";
+import dynamic from "next/dynamic";
 import {
   Chart as ChartJS,
   LineElement,
@@ -12,6 +12,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
+const Line = dynamic(() => import("react-chartjs-2").then((mod) => mod.Line), {
+  ssr: false,
+});
 
 ChartJS.register(
   LineElement,
@@ -41,18 +45,15 @@ export default function ServisPage() {
   }, []);
 
   useEffect(() => {
-    // Ambil semua koin dari 5 halaman pertama (maksimal 250 koin)
-    Promise.all([
-      ...Array(5)
-        .fill(null)
-        .map((_, i) =>
-          fetch(
-            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${
-              i + 1
-            }&sparkline=false&price_change_percentage=1h,24h,7d`
-          ).then((res) => res.json())
-        ),
-    ])
+    Promise.all(
+      Array.from({ length: 5 }, (_, i) =>
+        fetch(
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${
+            i + 1
+          }&sparkline=false&price_change_percentage=1h,24h,7d`
+        ).then((res) => res.json())
+      )
+    )
       .then((results) => setCoins(results.flat()))
       .catch((err) => console.error("Gagal fetch ranking kripto:", err));
   }, []);
@@ -60,11 +61,12 @@ export default function ServisPage() {
   useEffect(() => {
     if (!selectedCoin) return;
 
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/${selectedCoin}/market_chart?vs_currency=usd&days=7&interval=daily`
-    )
+    fetch(`/api/chart?coin=${selectedCoin}`)
       .then((res) => res.json())
-      .then((data) => setCoinChartData(data.prices || []))
+      .then((data) => {
+        setCoinChartData(data.prices || []);
+        console.log("GRAFIK DATA:", data.prices);
+      })
       .catch((err) => console.error("Gagal fetch grafik harga:", err));
   }, [selectedCoin]);
 
@@ -93,7 +95,6 @@ export default function ServisPage() {
         Layanan Kami
       </h1>
 
-      {/* RANKING HARGA KRIPTO */}
       <section className="max-w-7xl mx-auto mb-16">
         <h2 className="text-2xl font-semibold mb-4 text-element">
           Ranking Harga Kripto
@@ -200,7 +201,6 @@ export default function ServisPage() {
           </table>
         </div>
 
-        {/* Pagination */}
         <div className="text-center mt-6 flex flex-wrap justify-center items-center gap-2">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
@@ -231,7 +231,6 @@ export default function ServisPage() {
           </button>
         </div>
 
-        {/* Grafik */}
         {selectedCoin && coinChartData.length > 0 && (
           <div className="mt-10 bg-element2 p-4 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold mb-4">
@@ -269,7 +268,6 @@ export default function ServisPage() {
         )}
       </section>
 
-      {/* BERITA TERKINI */}
       <section className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold mb-4">Berita Terkini Crypto</h2>
         <ul className="space-y-4">
