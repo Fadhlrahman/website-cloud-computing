@@ -1,16 +1,11 @@
-import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
 
-# Contoh dataset dummy
-df = pd.DataFrame({
-    "hari": [1, 2, 3, 4, 5],
-    "harga": [27000, 27500, 28000, 28500, 29000],
-})
+# Dummy dataset
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([27000, 27500, 28000, 28500, 29000])
 
-X = df[["hari"]]
-y = df["harga"]
+model = RandomForestRegressor().fit(X, y)
 
-model = LinearRegression().fit(X, y)
-
-def predict_price(hari_ke: int) -> float:
+def predict_price(hari_ke: int):
     return model.predict([[hari_ke]])[0]
