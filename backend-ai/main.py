@@ -21,3 +21,13 @@ def predict_example():
     # Hari ke berapa yang mau ditest? Misal: 6
     prediksi = predict_price(6)
     return {"predicted_price": round(prediksi, 2)}
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Atau bisa spesifik ["http://localhost:3000"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
