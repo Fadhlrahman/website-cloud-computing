@@ -213,6 +213,7 @@ export default function ServisPage() {
           <select
             value={page}
             onChange={(e) => setPage(parseInt(e.target.value))}
+            
             className="px-4 py-2 rounded-md border bg-white text-element"
           >
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
