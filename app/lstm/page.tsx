@@ -1,55 +1,83 @@
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import dynamic from "next/dynamic";
-import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  LinearScale,
-  CategoryScale,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { div } from "three/tsl";
+"use client";
 
-//const Line = dynamic(() => import("react-chartjs-2)").then((mod) => mod.Line), {
-//  ssr: false,
-//});
+import { useEffect, useState } from "react";
 
-ChartJS.register(
-  LineElement,
-  PointElement,
-  LinearScale,
-  CategoryScale,
-  Tooltip,
-  Legend
-);
+type Result = {
+  coin: string;
+  predicted_price: number;
+};
 
-export default function LSTM() {
+const coinList = ["btc", "eth", "doge", "sol", "xrp"];
+
+export default function PrediksiKeseluruhan() {
+  const [results, setResults] = useState<Result[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      const temp: Result[] = [];
+
+      for (const coin of coinList) {
+        try {
+          const res = await fetch("http://localhost:5000/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ coin }),
+          });
+
+          const data = await res.json();
+          if (res.ok)
+            temp.push({ coin, predicted_price: data.predicted_price });
+        } catch (e) {
+          console.error(`Error fetching ${coin}`, e);
+        }
+      }
+
+      const sorted = temp.sort((a, b) => b.predicted_price - a.predicted_price);
+      setResults(sorted);
+      setLoading(false);
+    };
+
+    fetchAll();
+  }, []);
+
   return (
-    <div className="bg-belakang min-h-screen text-element py-10 px-4 sm:px-6 md:px-8">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
-        Layanan Kami
-      </h1>
+    <div className="min-h-screen bg-belakang text-element p-6">
+      <h1 className="text-2xl font-bold mb-4">Prediksi Harga Hari Ini</h1>
 
-      <section className="max-w-7xl mx-auto mb-16">
-        <h2 className="text-2xl font-semibold mb-4 text-element">
-          Ranking Harga Kripto
-        </h2>
-      </section>
-
-      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent">
-        <table className="min-w-full table-auto text-left bg-element2 rounded-lg overflow-hidden">
+      {loading ? (
+        <p>Memuat data...</p>
+      ) : (
+        <table className="min-w-full table-auto bg-element2 rounded-lg overflow-hidden">
           <thead>
-            <tr className="text-gray-600 border-b border-gray-600">
-              <th className="py-3 px-4">#</th>
-              <th className="py-3 px-4">Koin</th>
-              <th className="py-3 px-4">Harga (USD)</th>
-              <th className="py-3 px-4">24h %</th>
+            <tr className="text-left text-gray-600 border-b border-gray-600">
+              <th className="py-2 px-4">#</th>
+              <th className="py-2 px-4">Koin</th>
+              <th className="py-2 px-4">Harga Prediksi (USD)</th>
             </tr>
           </thead>
-          
+          <tbody>
+            {results.map((item, index) => (
+              <tr
+                key={item.coin}
+                className="border-b border-gray-700 text-element"
+              >
+                <td className="py-2 px-4">{index + 1}</td>
+                <td className="py-2 px-4 uppercase">{item.coin}</td>
+                <td className="py-2 px-4">
+                  $
+                  {parseFloat(
+                    String(item.predicted_price).replace(/[$,]/g, "")
+                  ).toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-      </div>
+      )}
     </div>
   );
 }
