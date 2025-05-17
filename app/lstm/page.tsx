@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Result = {
   coin: string;
-  predicted_price: number;
+  predicted_price: string;
 };
 
 const coinList = ["btc", "eth", "doge", "sol", "xrp"];
@@ -26,14 +26,31 @@ export default function PrediksiKeseluruhan() {
           });
 
           const data = await res.json();
-          if (res.ok)
-            temp.push({ coin, predicted_price: data.predicted_price });
+          if (res.ok && data.predicted_price) {
+            // Pastikan harga dalam bentuk string dan hilangkan simbol dolar sebelum parsing
+            const cleanedPrice = parseFloat(
+              data.predicted_price.replace(/[$,]/g, "")
+            );
+
+            temp.push({
+              coin,
+              predicted_price: cleanedPrice.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }),
+            });
+          }
         } catch (e) {
           console.error(`Error fetching ${coin}`, e);
         }
       }
 
-      const sorted = temp.sort((a, b) => b.predicted_price - a.predicted_price);
+      // Urutkan dari harga tertinggi ke terendah
+      const sorted = temp.sort(
+        (a, b) =>
+          parseFloat(b.predicted_price.replace(/[$,]/g, "")) -
+          parseFloat(a.predicted_price.replace(/[$,]/g, ""))
+      );
       setResults(sorted);
       setLoading(false);
     };
@@ -64,15 +81,7 @@ export default function PrediksiKeseluruhan() {
               >
                 <td className="py-2 px-4">{index + 1}</td>
                 <td className="py-2 px-4 uppercase">{item.coin}</td>
-                <td className="py-2 px-4">
-                  $
-                  {parseFloat(
-                    String(item.predicted_price).replace(/[$,]/g, "")
-                  ).toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </td>
+                <td className="py-2 px-4">${item.predicted_price}</td>
               </tr>
             ))}
           </tbody>
