@@ -42,11 +42,6 @@ export default function Navbar() {
               Contact
             </Link>
           </li>
-          <li>
-            <Link href="/lstm" className ="hover:text-blue-400">
-            LSTM
-            </Link>
-          </li>
         </ul>
       </div>
 
