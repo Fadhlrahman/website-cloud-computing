@@ -7,7 +7,7 @@ export default function Contact() {
       name: "Fadhlrahman Fitra Arsil",
       nim: "1101223151",
       image: "/images/fadhlrahman.png",
-      desc: "Specializes in UI/UX design and building interactive user experiences.",
+      desc: "Designing and building frontend and backend.",
       socials: {
         github: "https://github.com/fadhlrahman",
         instagram: "https://instagram.com/arseelll",
@@ -18,7 +18,7 @@ export default function Contact() {
       name: "Rama Pradana Wijaya",
       nim: "1101223168",
       image: "/images/rama.png",
-      desc: "Expert in building scalable server-side applications and APIs.",
+      desc: "Designing and building frontend.",
       socials: {
         github: "https://github.com/ramaaprdnaa",
         instagram: "https://instagram.com/ramaaprdnaa",
