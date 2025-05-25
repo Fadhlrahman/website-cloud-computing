@@ -22,7 +22,7 @@ export default function PrediksiKeseluruhan() {
       for (const coin of coinList) {
         try {
           const res = await fetch(
-            `http://localhost:5000/predict?coin=${coin}&range=7`
+            `https://lstm-crypto.onrender.com/predict?coin=${coin}&range=7`
           );
           const data = await res.json();
 
@@ -35,7 +35,7 @@ export default function PrediksiKeseluruhan() {
             });
           }
         } catch (e) {
-          console.error(`❌ Gagal fetch ${coin}`, e);
+          console.error(` Gagal fetch ${coin}`, e);
         }
       }
 
